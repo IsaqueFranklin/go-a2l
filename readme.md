@@ -4,4 +4,4 @@ A minimal Proof of Concept implementation of the Anonymous Atomic Locks protocol
 
 Using the following libs:
 - [PARI/GP](https://pari.math.u-bordeaux.fr/): For using class groups for implementing Castagnos-Laguillaumie encryption scheme.
-- [btcec/schnorr](https://github.com/btcsuite/btcd/tree/master/btcec/schnorr): For the curve of the A in the puzzle ($A = g^\alpha$ ).
+- [btcec/schnorr](https://github.com/btcsuite/btcd/tree/master/btcec/schnorr): For the curve of the A in the puzzle.
