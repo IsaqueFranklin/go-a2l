@@ -24,12 +24,12 @@ cl_params* setup_params() {
     return p;
 }
 
-int generate_cl_keys(cl_params* params) {
-    GEN cl_sk_tumbler, cl_pk_tumbler;
+int generate_cl_keys(GEN *sk, GEN *pk, cl_params* params) {
+    pari_sp av = avma; // Save the current PARI stack pointer (for further cleaning)
 
     // Compute CL encryption secret/public key pair for the tumbler.
-    cl_sk_tumbler = randomi(params->bound);
-    cl_pk_tumbler = nupow(params->g_q, cl_sk_tumbler, NULL);
+    *sk = randomi(params->bound);
+    *pk = nupow(params->g_q, *sk, NULL);
 
     return 0;
 }
@@ -60,5 +60,8 @@ GEN encrypt_cl(GEN plaintext, GEN public_key, cl_params* params) {
     GEN pk_r = nupow(public_key, r, NULL);
     GEN c2 = gmul(pk_r, f_m); // gmul does the Gauss composition
 
-    return mkvec2(c1, c2); // Return the ciphertext as a vector (c1, c2)
+    GEN result = mkvec2(c1, c2); // Return the ciphertext as a vector (c1, c2)
+
+    return gerepilecopy(av, result); // Clean the PARI stack and return the result => Necessary to avoid memory leaks, 
+    //meaning each time Go calls this function, the memory used inside it is freed and does not acumulate. 
 }
