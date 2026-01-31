@@ -1,4 +1,4 @@
-package mypari
+package cl
 
 /*
 #include <pari/pari.h>
