@@ -13,6 +13,9 @@ typedef struct {
 
 void init_pari();
 cl_params* setup_params();
+char* ciphertext_to_hex(GEN ciphertext);
+int generate_cl_keys(GEN *sk, GEN *pk, cl_params* params);
 GEN encrypt_cl(GEN plaintext, GEN public_key, cl_params* params);
+GEN decrypt_cl(GEN ciphertext, GEN secret_key, cl_params* params);
 
 #endif

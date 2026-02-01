@@ -17,6 +17,6 @@ The module implements specialized mathematical operations such as working with b
 - **`Fp_inv`**: Modular inversion a^-1 (mod m), used for the m.
 - **`mpodd`**: Verifies if is an odd number, returns 1 if odd. Using a "!" inverts it.
 - **`subii`**: Subtracts 2 integers
-- **`qfi`**: Quadratic form initialization
+- **`Qfb`**: Quadratic form initialization
 - **`deviiexact`**: Exact integer division (the rest needs to be 0).
 - **`mkvec2`**: Creates a PARI vector containing 2 elements.
